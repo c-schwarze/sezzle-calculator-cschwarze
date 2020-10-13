@@ -16,6 +16,7 @@ def calculate():
 
     if full_equation == '':
         return 'Error! You have submitted an empty equation'
+
     split_equation = full_equation.split(' ')
     numbers = split_equation[::2]
     operators = split_equation[1::2]

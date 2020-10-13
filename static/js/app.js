@@ -1,4 +1,13 @@
 $( document ).ready(function() {
+    // replace enter key with submitting equation
+    $(document).on('keypress',function(e) {
+        if(e.which == 13) {
+            submit_equation();
+            event.preventDefault();
+        }
+    });
+
+    // add the new value to the field
     calc_btn = $(".calc-btn")
     calc_btn.click(function() {
         // todo: need to add logic so you can't put multiple equations
@@ -21,7 +30,13 @@ $( document ).ready(function() {
     })
 
 
-    $("#submit-btn").click(function() {
+    // on equals button press, submit equation
+    $("#equals-btn").click(function() {
+        submit_equation();
+    })
+
+    // submit the equation for processing
+    function submit_equation(){
         $.ajax({
             type: "POST",
             data: $("#calculator").serialize(),
@@ -29,10 +44,13 @@ $( document ).ready(function() {
             success: function(data) {
                 if( data != 'success')
                     alert(data);
+                else
+                    $('#full-equation').val('')
             }
         });
-    })
+    }
 
+    // every 1 second, pull new data
     setInterval(function(){
         $.ajax({
             type: "POST",
@@ -41,5 +59,5 @@ $( document ).ready(function() {
                 $("#output").html(data);
             }
         })
-    }, 2000);
+    }, 1000);
 })

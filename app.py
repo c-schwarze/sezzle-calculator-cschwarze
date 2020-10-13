@@ -15,9 +15,15 @@ def index():
 # The index page. In this case, the only GET request
 @app.route('/calculate', methods=['POST'])
 def calculate():
+    # get data
     form_data = request.form
-    do_calculate(form_data['first-num'], form_data['operator'], form_data['second-num'])
-    return 'test'
+    first_num = form_data['first-num']
+    operator = form_data['operator']
+    second_num = form_data['second-num']
+
+    total = do_calculate(first_num, operator, second_num)
+    log_calculation('{} {} {} = {}'.format(first_num, operator, second_num, total))
+    return 'success'
 
 
 # writes entries to a log file
@@ -39,6 +45,7 @@ def read_last_10_entries():
     return entries
 
 
+# strip the new lines from list elements
 def strip_new_lines_from_list_elements(list):
     new_list = []
     for item in list:
@@ -46,7 +53,7 @@ def strip_new_lines_from_list_elements(list):
     return new_list
 
 
+# do calculations
 def do_calculate(first_num, operator, second_num):
     total = eval("{}{}{}".format(first_num, operator, second_num))
-    log_calculation('{} {} {} = {}'.format(first_num, operator, second_num, total))
-    return True
+    return total

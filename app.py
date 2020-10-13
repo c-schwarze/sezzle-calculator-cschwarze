@@ -11,38 +11,43 @@ def index():
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
-    # get data once
     form_data = request.form
     full_equation = form_data['full-equation']
 
-    if full_equation != '':
-        split_equation = full_equation.split(' ')
-        first_num = split_equation[0]
-        operator = split_equation[1]
-        second_num = split_equation[2]
-    else:
-        first_num = form_data['first-num']
-        operator = form_data['operator']
-        second_num = form_data['second-num']
+    if full_equation == '':
+        return 'Error! You have submitted an empty equation'
+    split_equation = full_equation.split(' ')
+    numbers = split_equation[::2]
+    operators = split_equation[1::2]
+
+    if len(numbers) != len(operators) + 1:
+        return 'Error! You have ended the equation with an operator. Please finish with a number'
 
     # test data!
     # make sure they are numbers
     try:
-        int(first_num)
-        int(second_num)
+        for num in numbers:
+            int(num)
     except (KeyError, ValueError):
         return 'Error! One of the values is not a number. Please try again.'
 
     # make sure the operator is as expected
-    if operator not in ['+', '-', '*', '/']:
-        return 'Error! Somehow the operator is not sending an expected value'
-    # no division by 0 here!
-    elif operator == '/' and second_num == '0':
-        return 'Error! You are attempting to divide by 0.'
+    for operator in operators:
+        if operator not in ['+', '-', '*', '/']:
+            return 'Error! Somehow the operators are not correct'
 
     # calculate total
-    total = do_calculate(first_num, operator, second_num)
-    log_calculation('{} {} {} = {}'.format(first_num, clean_operator(operator), second_num, total))
+    total = get_total(numbers, operators)
+
+    # alert for division by 0
+    try:
+        if not total.isnumeric():
+            return total
+    except AttributeError:
+        # numbers don't have the method isnumeric(), so we want to pass
+        pass
+
+    log_calculation('{} = {}'.format(full_equation, total))
     return 'success'
 
 
@@ -84,16 +89,25 @@ def strip_new_lines_from_list_elements(list):
 
 
 # do calculations
-def do_calculate(first_num, operator, second_num):
-    total = eval("{}{}{}".format(first_num, operator, second_num))
-    return total
+def get_total(numbers, operators):
+    # do operators in this order
+    for operator_loop in ['*', '/', '+', '-']:
+        index = 0
+        while operator_loop in operators[:]:
+            if operator_loop == operators[index]:
+                # no division by 0 here!
+                if operator_loop == '/' and numbers[index+1] == '0':
+                    return 'Error! You are attempting to divide by 0.'
+                # calculate new number
+                new_num = eval("{}{}{}".format(numbers[index], operator_loop, numbers[index+1]))
+                # condense lists, as we combined the numbers already
+                del operators[index]
+                del numbers[index+1]
+                del numbers[index]
+                # add new number to the list.
+                numbers.insert(index,new_num)
+            else:
+                # only push index if no calculation was made, since you might do an operation on the same index
+                index += 1
 
-
-# converts the operator back to the better visual.
-def clean_operator(operator):
-    if operator == '*':
-        return 'x'
-    elif operator == '/':
-        return '÷'
-    else:
-        return operator
+    return numbers[0]

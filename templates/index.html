@@ -1,21 +1,31 @@
-<h1>Sezzle Calculator</h1>
-<p>by Caleb Schwarze</p>
-<hr>
-<div>
-    <form id="calculator">
-        <input type="text" name="first-num">
-        <select name="operator">
-            <option value="+">+</option>
-            <option value="-">-</option>
-            <option value="*">x</option>
-            <option value="/">÷</option>
-        </select>
-        <input type="text" name="second-num">
-        <button type="button" id="submit">Calculate</button>
-    </form>
-</div>
-<div id="output"></div>
+<html>
+    <head>
+        <link rel="shortcut icon" href="/static/ico/favicon.ico">
+    </head>
+    <h1>Sezzle Calculator</h1>
+    <p>by Caleb Schwarze</p>
+    <hr>
+    <div>
+        <form id="calculator">
+            <input type="text" name="first-num">
+            <select name="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">x</option>
+                <option value="/">÷</option>
+            </select>
+            <input type="text" name="second-num">
+            <button type="button" id="submit">Calculate</button>
+        </form>
 
-{# jquery #}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/static/app.js"></script>
+        <div id="visual-calculator">
+
+        </div>
+    </div>
+    <div id="output"></div>
+
+    {# jquery #}
+    <script src="/static/js/jquery.min.js"></script>
+    {# local js #}
+    <script src="/static/js/app.js"></script>
+</html>

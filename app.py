@@ -21,7 +21,7 @@ def calculate():
 
     # calculate total
     total = do_calculate(first_num, operator, second_num)
-    log_calculation('{} {} {} = {}'.format(first_num, operator, second_num, total))
+    log_calculation('{} {} {} = {}'.format(first_num, clean_operator(operator), second_num, total))
     return 'success'
 
 
@@ -45,7 +45,7 @@ def read_last_10_entries():
     lines = file.readlines()
 
     # get the most recent 10 items from a list
-    entries = lines[-10:]
+    entries = reversed(lines[-10:])
     entries = strip_new_lines_from_list_elements(entries)
     return render_template('output.html', entries=entries)
 
@@ -62,3 +62,11 @@ def strip_new_lines_from_list_elements(list):
 def do_calculate(first_num, operator, second_num):
     total = eval("{}{}{}".format(first_num, operator, second_num))
     return total
+
+
+# converts the operator back to the better visual.
+def clean_operator(operator):
+    if operator == '*':
+        return 'x'
+    elif operator == '/':
+        return '÷'

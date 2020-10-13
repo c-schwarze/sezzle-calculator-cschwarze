@@ -4,9 +4,6 @@ $( document ).ready(function() {
             type: "POST",
             data: $("#calculator").serialize(),
             url: "/calculate"
-//            success: function(data) {
-//                console.log(data);
-//            }
         });
     })
 
@@ -17,5 +14,5 @@ $( document ).ready(function() {
             success: function(data) {
                 $("#output").html(data);
             }
-        }), 1000});
+        }), 2000});
 })

@@ -70,3 +70,5 @@ def clean_operator(operator):
         return 'x'
     elif operator == '/':
         return '÷'
+    else:
+        return operator

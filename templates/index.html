@@ -4,6 +4,8 @@
         <link rel="shortcut icon" href="/static/ico/favicon.ico">
         {# boostrap css #}
         <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+        {# local css #}
+        <link rel="stylesheet" href="/static/css/app.css">
     </head>
     <body>
         <div class="container">
@@ -12,21 +14,51 @@
             <hr>
             <div>
                 <form id="calculator">
-                    <input type="text" name="first-num">
-                    <select name="operator">
-                        <option value="+">+</option>
-                        <option value="-">-</option>
-                        <option value="*">x</option>
-                        <option value="/">÷</option>
-                    </select>
-                    <input type="text" name="second-num">
-                    <button type="button" id="submit">Calculate</button>
+                    <input type="text" name="full-equation" id="full-equation" hidden>
+                    {# this was used for the basic version #}
+<!--                    <input type="text" name="first-num">-->
+<!--                    <select name="operator">-->
+<!--                        <option value="+">+</option>-->
+<!--                        <option value="-">-</option>-->
+<!--                        <option value="*">x</option>-->
+<!--                        <option value="/">÷</option>-->
+<!--                    </select>-->
+<!--                    <input type="text" name="second-num">-->
+<!--                    <button type="button" id="submit">Calculate</button>-->
                 </form>
 
-                <div id="visual-calculator">
-
+                <div>
+                    <table id="visual-calculator">
+                        <tbody>
+                            <tr>
+                                <td><button type="button" class="calc-btn" value="1">1</button></td>
+                                <td><button type="button" class="calc-btn" value="2">2</button></td>
+                                <td><button type="button" class="calc-btn" value="3">3</button></td>
+                                <td><button type="button" class="calc-btn" value=" + ">+</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="button" class="calc-btn" value="4">4</button></td>
+                                <td><button type="button" class="calc-btn" value="5">5</button></td>
+                                <td><button type="button" class="calc-btn" value="6">6</button></td>
+                                <td><button type="button" class="calc-btn" value=" - ">-</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="button" class="calc-btn" value="7">7</button></td>
+                                <td><button type="button" class="calc-btn" value="8">8</button></td>
+                                <td><button type="button" class="calc-btn" value="9">9</button></td>
+                                <td><button type="button" class="calc-btn" value=" * ">x</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="button" class="calc-btn" value="0">0</button></td>
+                                <td><button type="button" class="calc-btn" value=" / ">÷</button></td>
+                                <td></td>
+                                <td><button type="button" class="calc-btn" id="submit-btn">=</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div id="output"></div>
+                <hr>
+                <div id="output" class="card"></div>
             </div>
         </div>
 

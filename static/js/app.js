@@ -1,5 +1,13 @@
 $( document ).ready(function() {
-    $("#submit").click(function() {
+    calc_btn = $(".calc-btn")
+    calc_btn.click(function() {
+        // todo: need to add logic so you can't put multiple equations
+        full_equation = $('#full-equation');
+        full_equation.val(full_equation.val() + $(this).val());
+    })
+
+
+    $("#submit-btn").click(function() {
         $.ajax({
             type: "POST",
             data: $("#calculator").serialize(),

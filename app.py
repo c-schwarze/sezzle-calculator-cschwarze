@@ -9,15 +9,21 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-
-# The index page. In this case, the only GET request
 @app.route('/calculate', methods=['POST'])
 def calculate():
     # get data once
     form_data = request.form
-    first_num = form_data['first-num']
-    operator = form_data['operator']
-    second_num = form_data['second-num']
+    full_equation = form_data['full-equation']
+
+    if full_equation != '':
+        split_equation = full_equation.split(' ')
+        first_num = split_equation[0]
+        operator = split_equation[1]
+        second_num = split_equation[2]
+    else:
+        first_num = form_data['first-num']
+        operator = form_data['operator']
+        second_num = form_data['second-num']
 
     # test data!
     # make sure they are numbers
@@ -40,7 +46,7 @@ def calculate():
     return 'success'
 
 
-# The index page. In this case, the only GET request
+# returns the output for all users on the index page
 @app.route('/get_output', methods=['POST'])
 def get_output():
     return read_last_10_entries()

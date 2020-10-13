@@ -1,0 +1,11 @@
+#visual-calculator>tbody>tr>td {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    text-align: center;
+}
+
+button.calc-btn {
+    background-color: white;
+    padding: 30px;
+}

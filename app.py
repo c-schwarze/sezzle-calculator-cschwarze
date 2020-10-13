@@ -7,9 +7,7 @@ app = Flask(__name__)
 # The index page. In this case, the only GET request
 @app.route('/', methods=['GET'])
 def index():
-    log_calculation('3+4=10')
-    entries = read_last_10_entries()
-    return render_template('index.html', **locals())
+    return render_template('index.html')
 
 
 # The index page. In this case, the only GET request
@@ -21,9 +19,16 @@ def calculate():
     operator = form_data['operator']
     second_num = form_data['second-num']
 
+    # calculate total
     total = do_calculate(first_num, operator, second_num)
     log_calculation('{} {} {} = {}'.format(first_num, operator, second_num, total))
     return 'success'
+
+
+# The index page. In this case, the only GET request
+@app.route('/get_output', methods=['POST'])
+def get_output():
+    return read_last_10_entries()
 
 
 # writes entries to a log file
@@ -42,7 +47,7 @@ def read_last_10_entries():
     # get the most recent 10 items from a list
     entries = lines[-10:]
     entries = strip_new_lines_from_list_elements(entries)
-    return entries
+    return render_template('output.html', entries=entries)
 
 
 # strip the new lines from list elements

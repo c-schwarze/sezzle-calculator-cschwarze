@@ -14,5 +14,6 @@ $( document ).ready(function() {
             success: function(data) {
                 $("#output").html(data);
             }
-        }), 2000});
+        })
+    }, 2000);
 })

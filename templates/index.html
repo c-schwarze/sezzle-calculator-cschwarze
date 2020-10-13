@@ -2,16 +2,20 @@
 <p>by Caleb Schwarze</p>
 <hr>
 <div>
-    <form action="/calculate" method="post">
-        <input type="text" id="first-num">
-        <select id="operator">
+    <form id="calculator">
+        <input type="text" name="first-num">
+        <select name="operator">
             <option>+</option>
             <option>-</option>
             <option>x</option>
             <option>&div;</option>
         </select>
-        <input type="text" id="second-num">
-        <input type="submit">
+        <input type="text" name="second-num">
+        <button type="button" id="submit">Calculate</button>
     </form>
 </div>
 <div id="output"></div>
+
+{# jquery #}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/static/app.js"></script>

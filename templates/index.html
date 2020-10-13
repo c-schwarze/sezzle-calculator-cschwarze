@@ -1,3 +1,17 @@
-Hello World
-
-{{ entries }}
+<h1>Sezzle Calculator</h1>
+<p>by Caleb Schwarze</p>
+<hr>
+<div>
+    <form action="/calculate" method="post">
+        <input type="text" id="first-num">
+        <select id="operator">
+            <option>+</option>
+            <option>-</option>
+            <option>x</option>
+            <option>&div;</option>
+        </select>
+        <input type="text" id="second-num">
+        <input type="submit">
+    </form>
+</div>
+<div id="output"></div>

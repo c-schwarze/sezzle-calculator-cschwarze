@@ -14,7 +14,7 @@
             <hr>
             <div>
                 <form id="calculator">
-                    <input type="text" name="full-equation" id="full-equation" hidden>
+                    <input type="text" name="full-equation" id="full-equation">
                     {# this was used for the basic version #}
 <!--                    <input type="text" name="first-num">-->
 <!--                    <select name="operator">-->
@@ -31,27 +31,27 @@
                     <table id="visual-calculator">
                         <tbody>
                             <tr>
-                                <td><button type="button" class="calc-btn" value="1">1</button></td>
-                                <td><button type="button" class="calc-btn" value="2">2</button></td>
-                                <td><button type="button" class="calc-btn" value="3">3</button></td>
-                                <td><button type="button" class="calc-btn" value=" + ">+</button></td>
+                                <td><button type="button" class="calc-btn add-input" value="1">1</button></td>
+                                <td><button type="button" class="calc-btn add-input" value="2">2</button></td>
+                                <td><button type="button" class="calc-btn add-input" value="3">3</button></td>
+                                <td><button type="button" class="calc-btn add-input" value=" + ">+</button></td>
                             </tr>
                             <tr>
-                                <td><button type="button" class="calc-btn" value="4">4</button></td>
-                                <td><button type="button" class="calc-btn" value="5">5</button></td>
-                                <td><button type="button" class="calc-btn" value="6">6</button></td>
-                                <td><button type="button" class="calc-btn" value=" - ">-</button></td>
+                                <td><button type="button" class="calc-btn add-input" value="4">4</button></td>
+                                <td><button type="button" class="calc-btn add-input" value="5">5</button></td>
+                                <td><button type="button" class="calc-btn add-input" value="6">6</button></td>
+                                <td><button type="button" class="calc-btn add-input" value=" - ">-</button></td>
                             </tr>
                             <tr>
-                                <td><button type="button" class="calc-btn" value="7">7</button></td>
-                                <td><button type="button" class="calc-btn" value="8">8</button></td>
-                                <td><button type="button" class="calc-btn" value="9">9</button></td>
-                                <td><button type="button" class="calc-btn" value=" * ">x</button></td>
+                                <td><button type="button" class="calc-btn add-input" value="7">7</button></td>
+                                <td><button type="button" class="calc-btn add-input" value="8">8</button></td>
+                                <td><button type="button" class="calc-btn add-input" value="9">9</button></td>
+                                <td><button type="button" class="calc-btn add-input" value=" * ">x</button></td>
                             </tr>
                             <tr>
-                                <td><button type="button" class="calc-btn" value="0">0</button></td>
-                                <td><button type="button" class="calc-btn" value=" / ">÷</button></td>
                                 <td></td>
+                                <td><button type="button" class="calc-btn add-input" value="0">0</button></td>
+                                <td><button type="button" class="calc-btn add-input" value=" / ">÷</button></td>
                                 <td><button type="button" class="calc-btn" id="submit-btn">=</button></td>
                             </tr>
                         </tbody>

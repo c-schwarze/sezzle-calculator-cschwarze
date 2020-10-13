@@ -59,5 +59,6 @@ $( document ).ready(function() {
                 $("#output").html(data);
             }
         })
+    // updated every 1 second
     }, 1000);
 })

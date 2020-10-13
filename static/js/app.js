@@ -3,7 +3,11 @@ $( document ).ready(function() {
         $.ajax({
             type: "POST",
             data: $("#calculator").serialize(),
-            url: "/calculate"
+            url: "/calculate",
+            success: function(data) {
+                if( data != 'success')
+                    alert(data);
+            }
         });
     })
 

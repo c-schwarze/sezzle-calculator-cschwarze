@@ -1,31 +1,40 @@
 <html>
     <head>
+        {# favicon #}
         <link rel="shortcut icon" href="/static/ico/favicon.ico">
+        {# boostrap css #}
+        <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     </head>
-    <h1>Sezzle Calculator</h1>
-    <p>by Caleb Schwarze</p>
-    <hr>
-    <div>
-        <form id="calculator">
-            <input type="text" name="first-num">
-            <select name="operator">
-                <option value="+">+</option>
-                <option value="-">-</option>
-                <option value="*">x</option>
-                <option value="/">÷</option>
-            </select>
-            <input type="text" name="second-num">
-            <button type="button" id="submit">Calculate</button>
-        </form>
+    <body>
+        <div class="container">
+            <h1>Sezzle Calculator</h1>
+            <p>by Caleb Schwarze</p>
+            <hr>
+            <div>
+                <form id="calculator">
+                    <input type="text" name="first-num">
+                    <select name="operator">
+                        <option value="+">+</option>
+                        <option value="-">-</option>
+                        <option value="*">x</option>
+                        <option value="/">÷</option>
+                    </select>
+                    <input type="text" name="second-num">
+                    <button type="button" id="submit">Calculate</button>
+                </form>
 
-        <div id="visual-calculator">
+                <div id="visual-calculator">
 
+                </div>
+                <div id="output"></div>
+            </div>
         </div>
-    </div>
-    <div id="output"></div>
 
-    {# jquery #}
-    <script src="/static/js/jquery.min.js"></script>
-    {# local js #}
-    <script src="/static/js/app.js"></script>
+        {# jquery #}
+        <script src="/static/js/jquery.min.js"></script>
+        {# bootstrap js #}
+        <script src="/static/js/bootstrap.min.js"></script>
+        {# local js #}
+        <script src="/static/js/app.js"></script>
+    </body>
 </html>

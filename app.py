@@ -47,21 +47,6 @@ def strip_new_lines_from_list_elements(list):
 
 
 def do_calculate(first_num, operator, second_num):
-
-    first_num = int(first_num)
-    second_num = int(second_num)
-
-    # addition
-    if operator == '+':
-        total = first_num + second_num
-    # subtraction
-    elif operator == '-':
-        total = first_num - second_num
-    # multiplication
-    elif operator == 'x':
-        total = first_num * second_num
-    # division
-    elif operator == '&div;':
-        total = first_num / second_num
-    log_calculation('{}{}{}={}'.format(first_num, operator, second_num, total))
+    total = eval("{}{}{}".format(first_num, operator, second_num))
+    log_calculation('{} {} {} = {}'.format(first_num, operator, second_num, total))
     return True

@@ -1,5 +1,5 @@
 # sezzle-calculator-cschwarze
- My web calculator for Sezzle.
+ My web calculator for Sezzle. I am currently working on a React.js/Go/MySQL version here https://github.com/c-schwarze/sezzle-calculator-react.
  
 Features
 * You can type equations or use the visual calculator
